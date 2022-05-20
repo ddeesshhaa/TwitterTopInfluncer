@@ -21,7 +21,8 @@ map<string,vector<string>> graph; //show following state
 
 int main()
 {
-    ifstream  data("data.txt");
+    ifstream  data("twitter.csv");
+    //ifstream  data("x.txt");
     string text,temp="";
     while(getline(data, text))
     {
@@ -52,7 +53,7 @@ int main()
         v.push_back(make_pair(x.second,x.first));
     }
     sort(v.rbegin(), v.rend());
-    for (int i = 0; i < 10 ; i++) {
+    for (int i = 0; i < 2 ; i++) {
         cout<<"USER: "<<v[i].second<<" Has :"<<v[i].first<<" Followers"<<endl;
     }
     string x;
@@ -62,7 +63,7 @@ int main()
     {
         for(int k=0;k<graph[graph[x][a]].size();k++)
         {
-            if(find (graph[x].begin(), graph[x].end(), graph[graph[x][a]][k]) != graph[x].end())
+            if(find (graph[x].begin(), graph[x].end(), graph[graph[x][a]][k]) == graph[x].end())
             {
                 mutual[graph[graph[x][a]][k]]++;
             }
@@ -74,7 +75,12 @@ int main()
 sort(mutuf.rbegin(), mutuf.rend());
 
     for (int i = 0; i <mutuf.size()  ; i++) {
-        cout<<"USER: "<<mutuf[i].second<<" Has :"<<mutuf[i].first<<" Mutual Friends"<<endl;
+        if(mutuf[i].second!=x) {
+            cout << "USER: " << mutuf[i].second << " Has :" << mutuf[i].first << " Mutual Friends" << endl;
+        }
     }
+    //cout << "USER: " << mutuf[0].second << " Has :" << mutuf[0].first << " Mutual Friends" << endl;
+
+
     return 0;
 }
