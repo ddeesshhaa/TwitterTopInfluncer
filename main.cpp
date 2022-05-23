@@ -2,18 +2,11 @@
 #include <bits/stdc++.h>
 #include <cmath>
 #include <string>
-#include <fstream>
 using namespace std;
-#define ll  long long
-#define ull unsigned long long
-#define fl(i,k) for(int i=0 ;i<k; i++)
-#define fle(i,k) for(int i=0 ;i<k; i++)
-#define sz(c) (int)(c).size()
-#define print( a) cout << a << '\n'
 
 map<string,int> mp;   // count followers
 map<string ,int> mp2; //for followings
-vector<pair<int,string>> v; //top influnce for sorting
+vector<pair<int,string>> v; //top influncer for sorting
 set<string> s; //get id from file
 map<string,int> mutual; //count mutual friends of id
 vector<pair<int,string>> mutuf; //sort mutual friend
@@ -22,7 +15,7 @@ map<string,vector<string>> graph; //show following state
 
 int main() {
     ifstream data("data.csv");
-    string text, temp = "";
+    string text;
     while (getline(data, text)) {
         s.insert(text);
     }
@@ -76,13 +69,13 @@ int main() {
                 cout << "USER: " << v[i].second << endl;
             }
         }
-    } else{
+    } else {
         for (int i = 0; i < mutuf.size(); i++) {
             if (mutuf[i].second != x) {
                 cout << "USER: " << mutuf[i].second << " Has :" << mutuf[i].first << " Mutual Friends" << endl;
             } else {
             }
         }
-
+    }
     return 0;
 }
